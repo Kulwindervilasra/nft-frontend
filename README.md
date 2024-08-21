@@ -36,7 +36,7 @@ This DApp allows users to mint, view, and transfer NFTs (Non-Fungible Tokens) us
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/nft-dapp.git
+   git clone https://github.com/Kulwindervilasra/nft-frontend.git
    cd nft-dapp
    ```
 
