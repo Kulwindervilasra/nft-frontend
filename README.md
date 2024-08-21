@@ -5,6 +5,9 @@
 
 This DApp allows users to mint, view, and transfer NFTs (Non-Fungible Tokens) using an ERC-721 smart contract on the Ethereum blockchain. Users can connect their Ethereum wallet (e.g., MetaMask) and interact with the blockchain directly from the web interface. The DApp provides a smooth user experience for managing digital assets and showcases the power of decentralized technology.
 
+![Images](http://url/to/img.png)
+
+
 ## Technologies Used
 
 - **Front-End**: React.js, Bootstrap, Ethers.js (for blockchain interaction)
