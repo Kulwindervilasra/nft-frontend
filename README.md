@@ -96,24 +96,6 @@ The DApp allows users to perform the following actions:
 3. **View Owned NFTs**: The DApp displays a gallery of NFTs owned by the connected wallet.
 4. **Transfer NFTs**: Users can transfer their NFTs to other Ethereum addresses.
 
-## Deployment Instructions
-
-You can deploy your React app to any cloud platform such as Vercel, Netlify, or GitHub Pages. Here's how to deploy to Vercel:
-
-1. **Install Vercel CLI**
-
-   ```bash
-   npm install -g vercel
-   ```
-
-2. **Deploy the Application**
-
-   ```bash
-   vercel
-   ```
-
-   Follow the prompts to deploy your application.
-
 ## Additional Notes
 
 - Ensure that your MetaMask is connected to the appropriate Ethereum testnet (e.g., sepolia) to interact with the smart contract.
