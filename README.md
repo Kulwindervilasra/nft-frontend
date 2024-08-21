@@ -1,70 +1,125 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NFT DApp - Decentralized Application for Minting and Managing NFTs
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This DApp allows users to mint, view, and transfer NFTs (Non-Fungible Tokens) using an ERC-721 smart contract on the Ethereum blockchain. Users can connect their Ethereum wallet (e.g., MetaMask) and interact with the blockchain directly from the web interface. The DApp provides a smooth user experience for managing digital assets and showcases the power of decentralized technology.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Front-End**: React.js, Bootstrap, Ethers.js (for blockchain interaction)
+- **Smart Contract**: Solidity (ERC-721 standard)
+- **Blockchain**: Ethereum testnet (e.g., sepolia)
+- **Wallet Integration**: MetaMask
+- **Hosting**: Vercel/Netlify or any cloud platform
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Application Architecture
 
-### `npm test`
+- **React Frontend**: The React app provides a user interface for connecting a wallet, minting new NFTs, viewing owned NFTs, and transferring NFTs.
+- **Ethers.js**: Used for interacting with the Ethereum blockchain, including reading and writing to the smart contract.
+- **Solidity Smart Contract**: The backend logic for minting, transferring, and querying NFTs. Deployed on the Ethereum testnet.
+  
+### Assumptions & Decisions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The application assumes the user has MetaMask installed and is connected to an Ethereum testnet.
+- For simplicity, we used a minimalistic UI with Bootstrap.
+- The DApp does not handle mainnet deployments and uses testnets for cost-free interactions.
 
-### `npm run build`
+## Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Node.js** and **npm** installed.
+- **MetaMask** browser extension installed and connected to an Ethereum testnet (e.g., Sepolia).
+- Smart contract deployed on the Ethereum testnet (if you're deploying your own contract).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Setup and Running the Application Locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the Repository**
 
-### `npm run eject`
+   ```bash
+   git clone https://github.com/your-username/nft-dapp.git
+   cd nft-dapp
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Install Dependencies**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Set Up Environment Variables**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   Create a `.env` file in the root of your project and add the following variables:
 
-## Learn More
+   ```bash
+REACT_APP_CONTRACT=0x96D55ca348bEFD0BD4869b10476b1ACc7a4AbBAa
+REACT_APP_PINATA_BASE=https://yellow-defiant-leopard-8.mypinata.cloud/ipfs/
+REACT_APP_OWNER=0xD2c7390f2CBB54c563D4442F97501f47C5839AAe
+REACT_APP_API_URL=http://localhost:4000/api
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   You can obtain an Infura Project ID by signing up at [Infura](https://infura.io/).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. **Run the Application**
 
-### Code Splitting
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   This will start the React app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Analyzing the Bundle Size
+## Smart Contract Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. **Install Hardhat**
 
-### Making a Progressive Web App
+   ```bash
+   npm install --save-dev hardhat
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. **Compile and Deploy**
 
-### Advanced Configuration
+   - Create a `contracts` folder and add your ERC-721 contract (e.g., `AdvancedNFT.sol`).
+   - Configure your deployment script in `scripts/deploy.js`.
+   - Run the deployment script to deploy your contract to a testnet:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+     ```bash
+     npx hardhat run scripts/deploy.js --network sepolia
+     ```
 
-### Deployment
+   - After deployment, update the `REACT_APP_CONTRACT` in your `.env` file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Interacting with the Smart Contract
 
-### `npm run build` fails to minify
+The DApp allows users to perform the following actions:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Connect Wallet**: Users can connect their MetaMask wallet to the DApp.
+2. **Mint NFT**: Users can mint a new NFT by providing the token URI (which could include metadata such as name, image, and description).
+3. **View Owned NFTs**: The DApp displays a gallery of NFTs owned by the connected wallet.
+4. **Transfer NFTs**: Users can transfer their NFTs to other Ethereum addresses.
+
+## Deployment Instructions
+
+You can deploy your React app to any cloud platform such as Vercel, Netlify, or GitHub Pages. Here's how to deploy to Vercel:
+
+1. **Install Vercel CLI**
+
+   ```bash
+   npm install -g vercel
+   ```
+
+2. **Deploy the Application**
+
+   ```bash
+   vercel
+   ```
+
+   Follow the prompts to deploy your application.
+
+## Additional Notes
+
+- Ensure that your MetaMask is connected to the appropriate Ethereum testnet (e.g., sepolia) to interact with the smart contract.
+- You can view the deployed contract on [Etherscan sepolia](https://sepolia.etherscan.io/).
+- Always test your application thoroughly on the testnet before considering any mainnet deployment.
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
